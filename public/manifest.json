@@ -1,0 +1,23 @@
+{
+  "name": "Ahorro Fijo",
+  "short_name": "Ahorro Fijo",
+  "description": "Compara y ahorra en tus facturas de luz, internet, gas y alarmas con Ahorro Fijo.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
