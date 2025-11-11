@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Ahorro Fijo – Comparador de luz, internet, gas y alarmas",
@@ -34,6 +35,7 @@ export default function RootLayout({
     <html lang="es">
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );
