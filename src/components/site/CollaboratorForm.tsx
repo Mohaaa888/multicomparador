@@ -55,10 +55,7 @@ export function CollaboratorForm() {
             Déjanos tus datos y nos pondremos en contacto para integrarte en la red de partners de {"Tu Ahorro Fijo"}.
           </p>
         </div>
-        <form
-          action={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
-        >
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-sm font-medium" htmlFor="company">Empresa *</label>
             <Input id="company" name="company" placeholder="Nombre de la empresa" required />
