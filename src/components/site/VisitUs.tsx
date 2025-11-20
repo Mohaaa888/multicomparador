@@ -1,11 +1,13 @@
 "use client";
 
 const STORES = [
-  { name: "Tienda 1", address: "Calle Mayor 12, Madrid" },
-  { name: "Tienda 2", address: "Av. Diagonal 101, Barcelona" },
-  { name: "Tienda 3", address: "Gran Vía 45, Valencia" },
-  { name: "Tienda 4", address: "Plaza Nueva 3, Sevilla" },
-  { name: "Tienda 5", address: "Calle Larios 20, Málaga" },
+  "Carrer Manlleu 117 baixos 08570 Torelló",
+  "Avinguda Roma 96 local Manlleu",
+  "Ramón Abadal 4 Vic",
+  "Av. d'Amèrica, 43 local 4, 08913 Badalona, Barcelona",
+  "Calle Doctor Candi Bayés 68 local Vic",
+  "Carretera Alicun 24 Roquetas de Mar",
+  "Calle Torras i Bages 2 local Salt",
 ];
 
 export function VisitUs() {
@@ -20,13 +22,12 @@ export function VisitUs() {
           </p>
         </div>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {STORES.map((store) => (
+          {STORES.map((address) => (
             <div
-              key={store.name}
+              key={address}
               className="rounded-xl border border-gray-100 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900/60 px-4 py-3"
             >
-              <div className="text-sm font-semibold text-gray-900 dark:text-neutral-100">{store.name}</div>
-              <div className="text-xs text-gray-600 dark:text-neutral-400">{store.address}</div>
+              <div className="text-xs text-gray-600 dark:text-neutral-300">{address}</div>
             </div>
           ))}
         </div>

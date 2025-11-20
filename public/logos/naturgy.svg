@@ -1,0 +1,7 @@
+<svg width="512" height="200" viewBox="0 0 512 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="200" rx="28" fill="#ffffff"/>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="96" fill="#00437a" letter-spacing="6">
+    NATURGY
+  </text>
+  <path d="M420 42c24 8 48 30 48 55s-24 47-41 58a5 5 0 0 1-7-3.8C417 118 410 74 420 42z" fill="#ff7b1c"/>
+</svg>

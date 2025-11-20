@@ -7,10 +7,13 @@ const nextConfig: NextConfig = {
   // experimental: { appDir: true },
   // (opcional) configura domains si usas imágenes externas
   images: {
-    domains: ["logo.clearbit.com"],
+    domains: ["logo.clearbit.com", "upload.wikimedia.org"],
     localPatterns: [
       {
         pathname: "/icon-192.png",
+      },
+      {
+        pathname: "/logos/*",
       },
     ],
   },

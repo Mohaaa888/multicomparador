@@ -32,7 +32,8 @@ export async function POST(req: Request) {
     const COLLAB_TO = process.env.COLLAB_TO_EMAIL ?? TO;
 
     if (!API_KEY || !FROM || !COLLAB_TO) {
-      throw new Error("Faltan credenciales de correo");
+      console.warn("[collaborator] Falta configuración de correo. Enviando en modo simulación.");
+      return NextResponse.json({ ok: true, dryRun: true });
     }
 
     const resend = new Resend(API_KEY);

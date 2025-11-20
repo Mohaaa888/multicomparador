@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { isValidEmail, isValidPhone, normalizeSpanishPhone } from "@/lib/validation";
 
 export function CollaboratorForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -25,17 +26,32 @@ export function CollaboratorForm() {
       return;
     }
 
+    if (!isValidEmail(payload.email)) {
+      setError("Email inválido.");
+      return;
+    }
+
+    const normalizedPhone = normalizeSpanishPhone(payload.phone);
+
+    if (!isValidPhone(normalizedPhone)) {
+      setError("Teléfono inválido. Usa un número español válido.");
+      return;
+    }
+
     try {
       setStatus("loading");
       setError(null);
       const res = await fetch("/api/collaborator", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, phone: normalizedPhone }),
       });
       if (!res.ok) throw new Error("No se pudo enviar");
       setStatus("success");
-      event.currentTarget.reset();
+      setError(null);
+      requestAnimationFrame(() => {
+        event.currentTarget?.reset();
+      });
     } catch (err) {
       console.error(err);
       setStatus("error");

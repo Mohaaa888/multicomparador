@@ -1,0 +1,7 @@
+<svg width="512" height="200" viewBox="0 0 512 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="200" rx="28" fill="#ffffff"/>
+  <text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="92" fill="#0a8f5d" letter-spacing="4">
+    PLENITUDE
+  </text>
+  <path d="M120 70c-8 20-8 44 12 60s51 18 76 7c-7-22-22-41-40-52s-37-15-48-15z" fill="#f7c800"/>
+</svg>

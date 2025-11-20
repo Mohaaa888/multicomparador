@@ -11,7 +11,7 @@ export function Header({ onSelectCategoria }: Props) {
   return (
     <header className="sticky top-0 z-40 border-b bg-white/70 dark:bg-neutral-900/60 border-gray-200 dark:border-neutral-800 backdrop-blur">
       <div className="max-w-6xl mx-auto h-14 px-4 md:px-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <a href="#top" className="flex items-center gap-3">
           <Image
             src={siteConfig.logo}
             alt="Tu Ahorro Fijo"
@@ -21,33 +21,33 @@ export function Header({ onSelectCategoria }: Props) {
             className="h-8 w-8 object-contain rounded"
           />
           <span className="font-semibold">Tu Ahorro Fijo</span>
-        </div>
+        </a>
         <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700 dark:text-neutral-300">
           <button
             type="button"
             onClick={() => onSelectCategoria?.("luz")}
-            className="hover:text-gray-900 dark:hover:text-neutral-100"
+            className="cursor-pointer transition hover:-translate-y-0.5 hover:text-gray-900 dark:hover:text-neutral-100"
           >
             Luz
           </button>
           <button
             type="button"
             onClick={() => onSelectCategoria?.("internet")}
-            className="hover:text-gray-900 dark:hover:text-neutral-100"
+            className="cursor-pointer transition hover:-translate-y-0.5 hover:text-gray-900 dark:hover:text-neutral-100"
           >
             Internet
           </button>
           <button
             type="button"
             onClick={() => onSelectCategoria?.("gas")}
-            className="hover:text-gray-900 dark:hover:text-neutral-100"
+            className="cursor-pointer transition hover:-translate-y-0.5 hover:text-gray-900 dark:hover:text-neutral-100"
           >
             Gas
           </button>
           <button
             type="button"
             onClick={() => onSelectCategoria?.("alarmas")}
-            className="hover:text-gray-900 dark:hover:text-neutral-100"
+            className="cursor-pointer transition hover:-translate-y-0.5 hover:text-gray-900 dark:hover:text-neutral-100"
           >
             Alarmas
           </button>
