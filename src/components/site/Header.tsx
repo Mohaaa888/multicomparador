@@ -53,6 +53,12 @@ export function Header({ onSelectCategoria }: Props) {
         </nav>
         <div className="flex items-center gap-2">
           <a
+            href="#colabora"
+            className="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm bg-white text-gray-900 hover:bg-gray-100 dark:bg-transparent dark:text-neutral-100 dark:hover:text-white"
+          >
+            Colabora
+          </a>
+          <a
             href="#comparador"
             className="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm bg-gray-900 text-white hover:bg-black"
           >

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   // experimental: { appDir: true },
   // (opcional) configura domains si usas imágenes externas
   images: {
-    // domains: ["..."],
+    domains: ["logo.clearbit.com"],
   },
 };
 

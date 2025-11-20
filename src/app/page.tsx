@@ -8,6 +8,9 @@ import { HowItWorks } from "@/components/site/HowItWorks";
 import { Comparador, type ComparadorHandle } from "@/components/comparador/Comparador";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Footer } from "@/components/site/Footer";
+import { PartnerLogos } from "@/components/site/PartnerLogos";
+import { VisitUs } from "@/components/site/VisitUs";
+import { CollaboratorForm } from "@/components/site/CollaboratorForm";
 
 export default function Page() {
   const comparadorRef = useRef<ComparadorHandle | null>(null);
@@ -34,10 +37,13 @@ export default function Page() {
         <div className="max-w-5xl mx-auto px-4 md:px-6 pb-16">
           <Hero />
           <AutoSlider />
+          <PartnerLogos />
           <HowItWorks />
           <div id="comparador" className="scroll-mt-24">
             <Comparador ref={comparadorRef} />
           </div>
+          <VisitUs />
+          <CollaboratorForm />
           <Testimonials />
         </div>
       </main>

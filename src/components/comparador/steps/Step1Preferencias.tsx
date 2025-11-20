@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import type { FormData, Categoria, PreferenciaEntrada } from "../types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -15,6 +15,7 @@ type Props = {
 
 export default function Step1Preferencias({ data, onChange, onNext, onGoContact, onBack }: Props) {
   const fileRef = useRef<HTMLInputElement | null>(null);
+  const [errors, setErrors] = useState<string | null>(null);
 
   const handleEntrada = (mode: PreferenciaEntrada) => {
     onChange((prev) => ({
@@ -37,6 +38,46 @@ export default function Step1Preferencias({ data, onChange, onNext, onGoContact,
   const isManual = data.entrada === "manual";
 
   // opciones específicas según categoría (manual)
+  const { isValid, message } = useMemo(() => {
+    switch (data.categoria) {
+      case "luz": {
+        const missing = !data.luz.potencia || !data.luz.tarifaActual;
+        return { isValid: !missing, message: missing ? "Selecciona potencia y tarifa." : null };
+      }
+      case "internet": {
+        const missing =
+          !data.internet.tecnologia ||
+          !data.internet.velocidad ||
+          !data.internet.lineasMoviles ||
+          !data.internet.permanencia ||
+          !data.internet.operadorActual.trim();
+        return {
+          isValid: !missing,
+          message: missing ? "Completa tecnología, velocidad, líneas, permanencia y operador actual." : null,
+        };
+      }
+      case "gas": {
+        const missing = !data.gas.tarifaActual || !data.gas.uso;
+        return { isValid: !missing, message: missing ? "Selecciona tarifa y uso principal." : null };
+      }
+      case "alarmas": {
+        const missing = !data.alarmas.tipoVivienda || !data.alarmas.mascotas || !data.alarmas.empresaActual.trim();
+        return { isValid: !missing, message: missing ? "Indica inmueble, mascotas y empresa actual." : null };
+      }
+      default:
+        return { isValid: true, message: null };
+    }
+  }, [data]);
+
+  const handleManualNext = () => {
+    if (!isValid) {
+      setErrors(message);
+      return;
+    }
+    setErrors(null);
+    onNext();
+  };
+
   const renderManualFields = () => {
     if (data.categoria === "luz") {
       return (
@@ -234,6 +275,20 @@ export default function Step1Preferencias({ data, onChange, onNext, onGoContact,
               ))}
             </div>
           </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium">Operador actual *</label>
+            <input
+              className="mt-1 w-full border border-gray-200 dark:border-neutral-800 rounded px-3 py-2 bg-white dark:bg-neutral-900"
+              value={data.internet.operadorActual}
+              onChange={(e) =>
+                onChange((prev) => ({
+                  ...prev,
+                  internet: { ...prev.internet, operadorActual: e.target.value },
+                }))
+              }
+              placeholder="Ej. Movistar, Orange..."
+            />
+          </div>
         </div>
       );
     }
@@ -405,6 +460,20 @@ export default function Step1Preferencias({ data, onChange, onNext, onGoContact,
               </button>
             </div>
           </div>
+          <div>
+            <label className="block text-sm font-medium">Compañía actual *</label>
+            <input
+              className="mt-1 w-full border border-gray-200 dark:border-neutral-800 rounded px-3 py-2 bg-white dark:bg-neutral-900"
+              value={data.alarmas.empresaActual}
+              onChange={(e) =>
+                onChange((prev) => ({
+                  ...prev,
+                  alarmas: { ...prev.alarmas, empresaActual: e.target.value },
+                }))
+              }
+              placeholder="Ej. Prosegur, Securitas..."
+            />
+          </div>
         </div>
       );
     }
@@ -476,11 +545,12 @@ export default function Step1Preferencias({ data, onChange, onNext, onGoContact,
         <>
           {/* si manual: mostrar campos según categoría */}
           {renderManualFields()}
+          {errors && <p className="text-sm text-red-600">{errors}</p>}
           <div className="flex gap-3">
             <Button variant="outline" type="button" onClick={onBack}>
               Atrás
             </Button>
-            <Button type="button" onClick={onNext}>
+            <Button type="button" onClick={handleManualNext}>
               Continuar
             </Button>
           </div>

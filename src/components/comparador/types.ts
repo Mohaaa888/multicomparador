@@ -6,6 +6,7 @@ export type FormCommon = {
   nombre: string;
   telefono: string;
   email: string;
+  direccion: string;
   provincia: string;
   cp: string;
   aceptar: boolean;
@@ -20,24 +21,24 @@ export type FormLuz = {
 
 export type FormInternet = {
   direccion: string;
-  tecnologia: "fibra";
-  velocidad: "300" | "600" | "1000";
-  lineasMoviles: "1" | "2" | "3" | "4" | ">5";
-  permanencia: "0" | "<3" | "<6" | "otros";
+  tecnologia: "" | "fibra";
+  velocidad: "" | "300" | "600" | "1000";
+  lineasMoviles: "" | "1" | "2" | "3" | "4" | ">5";
+  permanencia: "" | "0" | "<3" | "<6" | "otros";
   operadorActual: string;
 };
 
 export type FormGas = {
   consumoAnual: string;
   tarifaActual: "" | "rl1" | "rl2" | "rl3";
-  uso: "cocina" | "acs" | "calefaccion";
+  uso: "" | "cocina" | "acs" | "calefaccion";
   caldera: "si" | "no";
 };
 
 export type FormAlarmas = {
-  tipoVivienda: "piso" | "chalet" | "local";
+  tipoVivienda: "" | "piso" | "chalet" | "local";
   metros: string;
-  mascotas: "si" | "no";
+  mascotas: "" | "si" | "no";
   prioridad: "precio" | "instalacion" | "monitorizacion";
   empresaActual: string;
 };

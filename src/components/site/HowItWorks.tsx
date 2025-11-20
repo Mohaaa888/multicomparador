@@ -1,6 +1,6 @@
 export  function HowItWorks() {
   return (
-    <section id="como-funciona" className="mb-10">
+    <section id="como-funciona" className="mb-10 scroll-mt-24">
       <div className="flex items-baseline justify-between mb-3">
         <h3 className="text-lg font-semibold">Cómo funciona</h3>
       </div>

@@ -32,7 +32,7 @@ function parseEntrada(v: string | null): PreferenciaEntrada {
 
 // 👇 defaults tipados con los literales correctos
 const DEFAULT_LUZ: FormLuz = {
-  potencia: "3.45",
+  potencia: "",
   consumoAnual: "",
   tarifaActual: "",
   discriminacion: "no",
@@ -40,24 +40,24 @@ const DEFAULT_LUZ: FormLuz = {
 
 const DEFAULT_INTERNET: FormInternet = {
   direccion: "",
-  tecnologia: "fibra",
-  velocidad: "300",
-  lineasMoviles: "1",
-  permanencia: "0",
+  tecnologia: "",
+  velocidad: "",
+  lineasMoviles: "",
+  permanencia: "",
   operadorActual: "",
 };
 
 const DEFAULT_GAS: FormGas = {
   consumoAnual: "",
   tarifaActual: "",
-  uso: "acs",
+  uso: "",
   caldera: "no",
 };
 
 const DEFAULT_ALARMAS: FormAlarmas = {
-  tipoVivienda: "piso",
+  tipoVivienda: "",
   metros: "",
-  mascotas: "no",
+  mascotas: "",
   prioridad: "precio",
   empresaActual: "",
 };
@@ -85,6 +85,7 @@ export async function POST(req: Request) {
               nombre: "",
               telefono: "",
               email: "",
+              direccion: "",
               provincia: "",
               cp: "",
               aceptar: false,
@@ -154,6 +155,7 @@ export async function POST(req: Request) {
       `<p><b>Nombre:</b> ${sanitize(body.common?.nombre)}</p>`,
       `<p><b>Teléfono:</b> ${sanitize(body.common?.telefono)}</p>`,
       `<p><b>Email:</b> ${sanitize(body.common?.email)}</p>`,
+      `<p><b>Dirección:</b> ${sanitize(body.common?.direccion)}</p>`,
       `<p><b>Provincia:</b> ${sanitize(body.common?.provincia)}</p>`,
       `<p><b>CP:</b> ${sanitize(body.common?.cp)}</p>`,
       `<p><b>Entrada:</b> ${body.entrada}</p>`,
@@ -166,7 +168,11 @@ export async function POST(req: Request) {
         `<p><b>Velocidad:</b> ${sanitize(body.internet?.velocidad)}</p>`,
         `<p><b>Líneas:</b> ${sanitize(body.internet?.lineasMoviles)}</p>`,
         `<p><b>Permanencia:</b> ${sanitize(body.internet?.permanencia)}</p>`,
+        `<p><b>Operador actual:</b> ${sanitize(body.internet?.operadorActual)}</p>`,
       );
+    }
+    if (body.categoria === "alarmas") {
+      htmlParts.push(`<p><b>Compañía actual:</b> ${sanitize(body.alarmas?.empresaActual)}</p>`);
     }
 
     const attachments: Array<{ filename: string; content: string }> = [];

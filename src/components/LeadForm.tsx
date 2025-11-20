@@ -10,14 +10,31 @@ import { Button } from "@/components/ui/button";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
+import { isValidEmail, isValidPhone, normalizeSpanishPhone, sanitizeEmail } from "@/lib/validation";
 
 const CATEGORIAS = ["luz", "internet", "gas", "alarmas"] as const;
 type Categoria = typeof CATEGORIAS[number];
 const LeadSchema = z.object({
   categoria: z.enum(CATEGORIAS, { message: "Selecciona un servicio" }),
   nombre: z.string().min(3, "Introduce tu nombre completo"),
-  telefono: z.string().min(8, "Teléfono inválido"),
-  email: z.string().email("Email inválido").optional().or(z.literal("")),
+  telefono: z
+    .string()
+    .trim()
+    .refine((val) => isValidPhone(val), {
+      message: "Introduce un teléfono español válido",
+    })
+    .transform((val) => normalizeSpanishPhone(val)),
+  email: z
+    .string()
+    .optional()
+    .transform((val) => sanitizeEmail(val ?? ""))
+    .refine((val) => !val || isValidEmail(val), {
+      message: "Email inválido",
+    }),
+  direccion: z
+    .string()
+    .trim()
+    .min(5, "Introduce la dirección completa"),
   cp: z.string().regex(/^\d{5}$/, "Código postal inválido"),
 });
 type LeadInput = z.infer<typeof LeadSchema>;
@@ -85,6 +102,13 @@ export default function LeadForm({ onSent }: { onSent: () => void }) {
         <Label>Email (opcional)</Label>
         <Input type="email" placeholder="tucorreo@ejemplo.com" {...register("email")} />
         {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
+      </div>
+
+      {/* Dirección */}
+      <div className="grid gap-2">
+        <Label>Dirección</Label>
+        <Input placeholder="Calle, número, piso..." {...register("direccion")} />
+        {errors.direccion && <p className="text-sm text-red-600">{errors.direccion.message}</p>}
       </div>
 
       {/* CP */}
