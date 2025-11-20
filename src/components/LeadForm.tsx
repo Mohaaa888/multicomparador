@@ -25,9 +25,9 @@ const LeadSchema = z.object({
     })
     .transform((val) => normalizeSpanishPhone(val)),
   email: z
-    .string()
+    .union([z.string().trim(), z.literal("")])
     .optional()
-    .transform((val) => sanitizeEmail(val ?? ""))
+    .transform((val) => sanitizeEmail((val ?? "").toString()))
     .refine((val) => !val || isValidEmail(val), {
       message: "Email inválido",
     }),
