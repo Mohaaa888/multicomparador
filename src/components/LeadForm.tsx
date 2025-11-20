@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import {
   Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
-import { isValidEmail, isValidPhone, normalizeSpanishPhone, sanitizeEmail } from "@/lib/validation";
+import { isValidPhone, normalizeSpanishPhone, sanitizeEmail } from "@/lib/validation";
 
 const CATEGORIAS = ["luz", "internet", "gas", "alarmas"] as const;
 type Categoria = typeof CATEGORIAS[number];
@@ -25,12 +25,8 @@ const LeadSchema = z.object({
     })
     .transform((val) => normalizeSpanishPhone(val)),
   email: z
-    .union([z.string().trim(), z.literal("")])
-    .optional()
-    .transform((val) => sanitizeEmail((val ?? "").toString()))
-    .refine((val) => !val || isValidEmail(val), {
-      message: "Email inválido",
-    }),
+    .union([z.literal(""), z.string().trim().email("Email inválido")])
+    .transform((val) => sanitizeEmail(val)),
   direccion: z
     .string()
     .trim()

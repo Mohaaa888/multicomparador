@@ -39,7 +39,7 @@ export function Hero() {
           <div className="w-full md:w-auto flex-shrink-0">
             <div className="relative mx-auto h-40 w-40 md:h-56 md:w-56 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl">
               <Image
-                src="/icon-192.png"
+                src={siteConfig.logo}
                 alt={`${siteConfig.name} logo`}
                 width={200}
                 height={200}

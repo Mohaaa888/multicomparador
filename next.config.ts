@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   // (opcional) configura domains si usas imágenes externas
   images: {
     domains: ["logo.clearbit.com"],
+    localPatterns: [
+      {
+        pathname: "/icon-192.png",
+      },
+    ],
   },
 };
 

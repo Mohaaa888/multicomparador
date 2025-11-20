@@ -7,7 +7,6 @@ const LOGOS = [
   { name: "Vodafone", src: "https://logo.clearbit.com/vodafone.es?size=256" },
   { name: "ADT", src: "https://logo.clearbit.com/adt.com?size=256" },
   { name: "Movistar", src: "https://logo.clearbit.com/movistar.es?size=256" },
-  { name: "Orange", src: "https://logo.clearbit.com/orange.es?size=256" },
 ];
 
 export function PartnerLogos() {
@@ -26,7 +25,7 @@ export function PartnerLogos() {
                 alt={`Logo de ${logo.name}`}
                 width={140}
                 height={48}
-                className="max-h-full object-contain grayscale opacity-80 transition hover:opacity-100"
+                className="max-h-full object-contain opacity-80 transition hover:opacity-100"
               />
             </div>
           ))}

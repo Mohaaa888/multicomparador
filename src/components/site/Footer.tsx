@@ -4,6 +4,7 @@ import { siteConfig } from "@/config/site";
 import { PrivacyPolicyModal } from "@/components/site/PrivacyPolicyModal";
 import { LegalNoticeModal } from "@/components/site/LegalNoticeModal";
 import { ContractConditionsModal } from "@/components/site/ContractConditionsModal";
+import { ContactModal } from "@/components/site/ContactModal";
 
 export  function Footer() {
   return (
@@ -15,7 +16,7 @@ export  function Footer() {
             <LegalNoticeModal trigger={<span>Aviso legal</span>} />
             <PrivacyPolicyModal trigger={<span>Privacidad</span>} />
             <ContractConditionsModal trigger={<span>Condiciones de contratación</span>} />
-            <a className="hover:underline" href={siteConfig.legal.contacto}>Contacto</a>
+            <ContactModal trigger={<span>Contacto</span>} />
           </div>
           <div className="mt-2 md:mt-0 md:ml-4 text-xs">
             Atención al cliente:{" "}

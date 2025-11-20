@@ -1,6 +1,7 @@
 
 "use client";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 
 type Props = {
   onSelectCategoria?: (categoria: "luz" | "internet" | "gas" | "alarmas") => void;
@@ -12,7 +13,7 @@ export function Header({ onSelectCategoria }: Props) {
       <div className="max-w-6xl mx-auto h-14 px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Image
-            src="/icon-192.png"
+            src={siteConfig.logo}
             alt="Tu Ahorro Fijo"
             width={32}
             height={32}
@@ -54,13 +55,13 @@ export function Header({ onSelectCategoria }: Props) {
         <div className="flex items-center gap-2">
           <a
             href="#colabora"
-            className="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm bg-white text-gray-900 hover:bg-gray-100 dark:bg-transparent dark:text-neutral-100 dark:hover:text-white"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-sm text-gray-900 transition hover:bg-white/80 dark:text-neutral-100 dark:hover:bg-white/10"
           >
             Colabora
           </a>
           <a
             href="#comparador"
-            className="inline-flex items-center gap-2 rounded-md border px-3 py-1.5 text-sm bg-gray-900 text-white hover:bg-black"
+            className="inline-flex cursor-pointer items-center gap-2 rounded-md px-4 py-2 text-sm bg-gray-900 text-white transition hover:bg-black"
           >
             Comparar
           </a>
