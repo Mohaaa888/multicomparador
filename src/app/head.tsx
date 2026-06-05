@@ -8,6 +8,8 @@ export default function Head() {
       />
       <meta name="theme-color" content="#2563eb" />
       <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
       <link rel="manifest" href="/manifest.json" />
       <title>Ahorro Fijo</title>
     </>

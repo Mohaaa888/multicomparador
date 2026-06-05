@@ -1,20 +1,19 @@
 import Image from "next/image";
 
 const LOGOS = [
-  { name: "Repsol", src: "https://logo.clearbit.com/repsol.com?size=256" },
-  { name: "Lowi", src: "https://logo.clearbit.com/lowi.es?size=256" },
-  { name: "O2", src: "https://logo.clearbit.com/o2online.es?size=256" },
-  { name: "Vodafone", src: "https://logo.clearbit.com/vodafone.es?size=256" },
-  { name: "ADT", src: "https://logo.clearbit.com/adt.com?size=256" },
-  { name: "Endesa", src: "https://logo.clearbit.com/endesa.com?size=256" },
+  { name: "Repsol", src: "/logos/repsol.svg" },
+  { name: "Lowi", src: "/logos/lowi.svg" },
+  { name: "O2", src: "/logos/o2.svg", frameClassName: "flex h-12 w-12 items-center justify-center rounded-full bg-[#0050F0] p-2.5" },
+  { name: "Vodafone", src: "/logos/vodafone.png" },
+  { name: "ADT", src: "/logos/adt.svg" },
+  { name: "Endesa", src: "/logos/endesa.svg" },
   { name: "Naturgy", src: "/logos/naturgy.svg" },
-  { name: "Gana Energía", src: "https://logo.clearbit.com/ganaenergia.com?size=256" },
-  { name: "Acis", src: "https://logo.clearbit.com/acisenergia.com?size=256" },
-  { name: "Segurma", src: "https://logo.clearbit.com/segurma.com?size=256" },
-  { name: "Orange", src: "https://logo.clearbit.com/orange.es?size=256" },
-  { name: "Parlem", src: "https://logo.clearbit.com/parlem.com?size=256" },
+  { name: "Gana Energía", src: "/logos/gana-energia.svg" },
+  { name: "Acis", src: "/logos/acis.svg" },
+  { name: "Orange", src: "/logos/orange.svg" },
+  { name: "Parlem", src: "/logos/parlem.svg" },
   { name: "Plenitude", src: "/logos/plenitude.svg" },
-  { name: "Nexus", src: "https://logo.clearbit.com/nexusenergia.com?size=256" },
+  { name: "Nexus", src: "/logos/nexus.png" },
   { name: "Unic88", src: "/logos/unic88.svg" },
 ];
 
@@ -26,16 +25,18 @@ export function PartnerLogos() {
           <p className="text-xs uppercase tracking-[0.2em] text-gray-500">Confían en Ahorro Fijo</p>
           <h3 className="mt-1 text-base font-semibold">Trabajamos con las principales marcas</h3>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-8 sm:gap-x-10">
           {LOGOS.map((logo) => (
-            <div key={logo.name} className="flex flex-col items-center h-16 w-24 justify-between text-xs text-gray-600">
-              <Image
-                src={logo.src}
-                alt={`Logo de ${logo.name}`}
-                width={110}
-                height={38}
-                className={`max-h-full object-contain transition ${logo.name === "Repsol" ? "" : "opacity-80 hover:opacity-100"}`}
-              />
+            <div key={logo.name} className="flex h-20 w-28 flex-col items-center justify-between text-xs text-gray-600">
+              <div className={logo.frameClassName ?? "flex h-12 w-full items-center justify-center"}>
+                <Image
+                  src={logo.src}
+                  alt={`Logo de ${logo.name}`}
+                  width={132}
+                  height={48}
+                  className="h-full w-full object-contain opacity-90 transition hover:opacity-100"
+                />
+              </div>
               <span className="text-center text-[11px]">{logo.name}</span>
             </div>
           ))}
