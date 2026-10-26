@@ -9,7 +9,6 @@ const LOGOS = [
   { name: "Endesa", src: "/logos/endesa.svg" },
   { name: "Naturgy", src: "/logos/naturgy.svg" },
   { name: "Gana Energía", src: "/logos/gana-energia.svg" },
-  { name: "Acis", src: "/logos/acis.svg" },
   { name: "Orange", src: "/logos/orange.svg" },
   { name: "Parlem", src: "/logos/parlem.svg" },
   { name: "Plenitude", src: "/logos/plenitude.svg" },
